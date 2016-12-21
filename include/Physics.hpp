@@ -26,11 +26,13 @@ public:
 protected:
 private:
     milliseconds acc;
+    steady_clock::time_point t1;
 
     b2Vec2 gravity;
     b2World world;
 
     const float32 TIME_STEP = 1.0f / 60.0f;
+    const duration<float32> DUR_TIME_STEP;
 
     const int32 VELOCITY_ITERATIONS = 8;
     const int32 POSITION_ITERATIONS = 3;

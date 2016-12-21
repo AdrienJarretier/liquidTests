@@ -10,7 +10,7 @@ std::string Physics::toStr(const b2Vec2& vec2)
 }
 
 Physics::Physics()
-    :gravity(0.0f, -10.0f), world(gravity)
+    :t1(steady_clock::now()), gravity(0.0f, -10.0f), world(gravity), DUR_TIME_STEP(TIME_STEP)
 {
 #ifdef DEBUG
 //    steady_clock::time_point t2(steady_clock::now());
@@ -53,7 +53,24 @@ const b2World& Physics::getWorld() const
 
 void Physics::step()
 {
-    world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+    steady_clock::time_point t2(steady_clock::now());
+
+    milliseconds time_span = duration_cast<milliseconds>(t2 - t1);
+
+//    acc += time_span;
+//
+//    t1 = t2;
+
+    #ifdef DEBUG
+//    steady_clock::time_point t2(steady_clock::now());
+    std::cout << time_span.count() << std::endl;
+#endif
+
+//    if(acc.count() > TIME_STEP)
+//    {
+//        world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+////        acc -= duration_cast<seconds>(DUR_TIME_STEP);
+//    }
 }
 
 //
