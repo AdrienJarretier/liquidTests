@@ -18,7 +18,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="../liquidfun/liquidfun/Box2D/build/Box2D/Debug/libliquidfun.a" />
+					<Add library="extlibs/libs/Box2D/Debug/libliquidfun.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -37,7 +37,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="../liquidfun/liquidfun/Box2D/" />
+			<Add directory="extlibs/includes" />
 		</Compiler>
 		<Linker>
 			<Add option="-lsfml-graphics" />
