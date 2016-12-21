@@ -10,11 +10,13 @@ std::string Physics::toStr(const b2Vec2& vec2)
 }
 
 Physics::Physics()
-    :t1(steady_clock::now()), gravity(0.0f, -10.0f), world(gravity), DUR_TIME_STEP(TIME_STEP)
+    :gravity(0.0f, -10.0f), world(gravity),
+     MICROSECONDS_TIME_STEP(TIME_STEP*1000000),
+     t1(clock::now())
 {
 #ifdef DEBUG
 //    steady_clock::time_point t2(steady_clock::now());
-    std::cout << acc.count() << std::endl;
+//    std::cout << acc.count() << std::endl;
 #endif
 
     b2BodyDef groundBodyDef;
@@ -53,24 +55,23 @@ const b2World& Physics::getWorld() const
 
 void Physics::step()
 {
-    steady_clock::time_point t2(steady_clock::now());
+    clock::time_point t2(clock::now());
 
-    milliseconds time_span = duration_cast<milliseconds>(t2 - t1);
+    microseconds dt = duration_cast<microseconds>(t2 - t1);;
 
-//    acc += time_span;
-//
-//    t1 = t2;
+    acc += dt;
 
-    #ifdef DEBUG
-//    steady_clock::time_point t2(steady_clock::now());
-    std::cout << time_span.count() << std::endl;
+    t1 = t2;
+
+    if(acc.count() > MICROSECONDS_TIME_STEP)
+    {
+
+#ifdef DEBUG
+//        std::cout << acc.count() << std::endl;
 #endif
-
-//    if(acc.count() > TIME_STEP)
-//    {
-//        world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
-////        acc -= duration_cast<seconds>(DUR_TIME_STEP);
-//    }
+        world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+        acc -= microseconds(MICROSECONDS_TIME_STEP);
+    }
 }
 
 //
