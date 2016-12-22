@@ -15,11 +15,11 @@
 
 class ViewSFML
 {
-    public:
-        ViewSFML(Physics& phys);
-    protected:
-    private:
-        Physics& phys;
+public:
+    ViewSFML(Physics& phys);
+protected:
+private:
+    Physics& phys;
 };
 
 #endif // VIEWSFML_HPP
