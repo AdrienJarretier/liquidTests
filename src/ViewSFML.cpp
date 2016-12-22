@@ -5,6 +5,6 @@ ViewSFML::ViewSFML(Physics& phys)
 {
     #ifdef DEBUG
         std::cout << "ground pos from ViewSFML : ";
-        std::cout << Physics::toStr(phys.getWorld().GetBodyList()->GetPosition()) << std::endl;
+        std::cout << Physics::toStr(this->phys.getWorld().GetBodyList()->GetPosition()) << std::endl;
     #endif // DEBUG
 }
