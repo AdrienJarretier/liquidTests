@@ -49,9 +49,9 @@ void Shape::update()
         sfShape = std::move(cs);
 
 
-        sfShape->setOutlineColor(sf::Color::Red);
-        sfShape->setOutlineThickness(-1.0f);
-        sfShape->setFillColor(sf::Color::Black);
+        sfShape->setOutlineColor(OUTLINE_COLOR);
+        sfShape->setOutlineThickness(OUTLINE_THICKNESS);
+        sfShape->setFillColor(FILL_COLOR);
     }
     else if(type == b2Shape::e_chain)
     {
