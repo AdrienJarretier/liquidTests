@@ -45,9 +45,11 @@
 		</Linker>
 		<Unit filename="include/Physics.hpp" />
 		<Unit filename="include/Shape.hpp" />
+		<Unit filename="include/ViewSFML.hpp" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Physics.cpp" />
 		<Unit filename="src/Shape.cpp" />
+		<Unit filename="src/ViewSFML.cpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />
