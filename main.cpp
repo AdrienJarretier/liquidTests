@@ -1,11 +1,7 @@
 #include "Physics.hpp"
-#include "Shape.hpp"
-
-#include <SFML/Graphics.hpp>
+#include "ViewSFML.hpp"
 
 #include <iostream>
-#include <list>
-#include <memory>
 
 using namespace std;
 
@@ -13,9 +9,7 @@ int main()
 {
     Physics phys;
 
-    const b2Vec2& groundP = phys.getWorld().GetBodyList()->GetPosition();
-
-    cout << "ground : " << Physics::toStr(groundP) << endl;
+    ViewSFML view(phys);
 
 
     const b2Body* bod = phys.getWorld().GetBodyList();
@@ -45,9 +39,9 @@ int main()
 
     cout << "VIEW_HEIGHT : " << VIEW_HEIGHT << endl;
 
-    sf::View view(sf::FloatRect(-VIEW_WIDTH/2.0f + VIEW_CENTER.x, VIEW_HEIGHT/2.0f + VIEW_CENTER.y, VIEW_WIDTH, -VIEW_HEIGHT));
+    sf::View sfView(sf::FloatRect(-VIEW_WIDTH/2.0f + VIEW_CENTER.x, VIEW_HEIGHT/2.0f + VIEW_CENTER.y, VIEW_WIDTH, -VIEW_HEIGHT));
 
-    window.setView(view);
+    window.setView(sfView);
 
     while (window.isOpen())
     {
