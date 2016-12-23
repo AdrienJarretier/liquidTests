@@ -7,15 +7,11 @@
 
 #include <Box2D/Box2D.h>
 
-#include <chrono>
 #include <sstream>
 #include <string>
 
-using namespace std::chrono;
-
 class Physics
 {
-    using clock = high_resolution_clock;
 
 public:
     static std::string toStr(const b2Vec2& vec2);
@@ -34,12 +30,6 @@ private:
 
     const int32 VELOCITY_ITERATIONS = 8;
     const int32 POSITION_ITERATIONS = 3;
-
-    const int32 MICROSECONDS_TIME_STEP;
-
-    clock::time_point t1;
-    microseconds acc;
-
 
 };
 

@@ -1,7 +1,9 @@
 #include "ViewSFML.hpp"
 
 ViewSFML::ViewSFML(Physics& phys)
-    :phys(phys)
+    :phys(phys),
+     MICROSECONDS_TIME_STEP(1.0f/60.0f*1000000),
+     t1(clock::now())
 {
 #ifdef DEBUG
     std::cout << "ground pos from ViewSFML : ";
@@ -81,6 +83,27 @@ void ViewSFML::launch()
 
         window.display();
 
+        step();
+    }
+}
+
+void ViewSFML::step()
+{
+    clock::time_point t2(clock::now());
+
+    microseconds dt = duration_cast<microseconds>(t2 - t1);;
+
+    acc += dt;
+
+    t1 = t2;
+
+    if(acc.count() > MICROSECONDS_TIME_STEP)
+    {
+
+#ifdef DEBUG
+//        std::cout << acc.count() << std::endl;
+#endif
         phys.step();
+        acc -= microseconds(MICROSECONDS_TIME_STEP);
     }
 }

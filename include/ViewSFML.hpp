@@ -10,11 +10,16 @@
 
 #include <SFML/Graphics.hpp>
 
+#include <chrono>
 #include <list>
 #include <memory>
 
+using namespace std::chrono;
+
 class ViewSFML
 {
+    using clock = high_resolution_clock;
+
 public:
 
     ViewSFML(Physics& phys);
@@ -34,6 +39,13 @@ private:
     float viewHeight, viewWidth;
 
     void launch();
+
+    const int32 MICROSECONDS_TIME_STEP;
+
+    clock::time_point t1;
+    microseconds acc;
+
+    void step();
 
 };
 
