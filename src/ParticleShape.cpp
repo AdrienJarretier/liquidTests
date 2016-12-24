@@ -3,7 +3,7 @@
 ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio)
     : Shape(pixelsToMeterRatio), partSys(partSys), particleIndex(particleIndex)
 {
-    //ctor
+    update();
 }
 
 void ParticleShape::update()

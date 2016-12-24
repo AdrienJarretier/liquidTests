@@ -7,6 +7,7 @@
 
 #include "Physics.hpp"
 #include "Shape.hpp"
+#include "ParticleShape.hpp"
 
 #include <SFML/Graphics.hpp>
 
