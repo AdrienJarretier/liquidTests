@@ -22,15 +22,18 @@ public:
     static const int32 POSITION_ITERATIONS = 3;
 
     Physics();
+
     const b2World& getWorld() const;
 
     void step();
 
 //    const b2Vec2& getGroundPos();
 protected:
-private:
     b2Vec2 gravity;
     b2World world;
+private:
+
+    virtual void init() = 0;
 
 };
 

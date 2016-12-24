@@ -1,5 +1,6 @@
-#include "Physics.hpp"
 #include "ViewSFML.hpp"
+
+#include "HelloWorld.hpp"
 
 #include <iostream>
 
@@ -7,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    Physics phys;
+    HelloWorld phys;
 
     ViewSFML view(phys);
 
