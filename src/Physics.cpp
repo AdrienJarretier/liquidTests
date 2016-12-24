@@ -26,7 +26,7 @@ const b2World& Physics::getWorld() const
 
 void Physics::step()
 {
-    world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS);
+    world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS, PARTICLES_ITERATIONS);
 }
 
 //

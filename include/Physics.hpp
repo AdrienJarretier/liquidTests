@@ -20,6 +20,7 @@ public:
 
     static const int32 VELOCITY_ITERATIONS = 8;
     static const int32 POSITION_ITERATIONS = 3;
+    static const int32 PARTICLES_ITERATIONS = 1;
 
     Physics();
     virtual ~Physics() = 0;

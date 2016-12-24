@@ -10,6 +10,7 @@ public:
     FlowInto();
 protected:
 private:
+    b2ParticleSystem* particleSystem;
 };
 
 #endif // FLOWINTO_HPP
