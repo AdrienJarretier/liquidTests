@@ -5,7 +5,7 @@ FlowInto::FlowInto()
     b2ParticleSystemDef partSysDef;
     partSysDef.radius = 0.35f;
 
-    particleSystem = world.CreateParticleSystem(&partSysDef);
+    b2ParticleSystem* particleSystem = world.CreateParticleSystem(&partSysDef);
 
     b2CircleShape partGpCirlce;
 
@@ -17,5 +17,7 @@ FlowInto::FlowInto()
     partGpDef.shape = &partGpCirlce;
 
     particleSystem->CreateParticleGroup(partGpDef);
+
+    particleSystems.push_back(particleSystem);
 
 }

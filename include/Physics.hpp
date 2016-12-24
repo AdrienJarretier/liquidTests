@@ -7,6 +7,7 @@
 
 #include <Box2D/Box2D.h>
 
+#include <list>
 #include <sstream>
 #include <string>
 
@@ -33,6 +34,7 @@ public:
 protected:
     b2Vec2 gravity;
     b2World world;
+    std::list<b2ParticleSystem*> particleSystems;
 private:
 
 };
