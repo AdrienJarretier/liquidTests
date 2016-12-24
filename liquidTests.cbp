@@ -43,15 +43,18 @@
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
 		</Linker>
+		<Unit filename="include/FlowInto.hpp" />
 		<Unit filename="include/HelloWorld.hpp" />
 		<Unit filename="include/Physics.hpp" />
 		<Unit filename="include/Shape.hpp" />
 		<Unit filename="include/ViewSFML.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/FlowInto.cpp" />
 		<Unit filename="src/HelloWorld.cpp" />
 		<Unit filename="src/Physics.cpp" />
 		<Unit filename="src/Shape.cpp" />
 		<Unit filename="src/ViewSFML.cpp" />
+		<Unit filename="tests.hpp" />
 		<Extensions>
 			<code_completion />
 			<envvars />

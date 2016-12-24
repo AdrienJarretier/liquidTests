@@ -1,6 +1,6 @@
 #include "ViewSFML.hpp"
 
-#include "HelloWorld.hpp"
+#include "tests.hpp"
 
 #include <iostream>
 
@@ -8,7 +8,7 @@ using namespace std;
 
 int main()
 {
-    HelloWorld phys;
+    FlowInto phys;
 
     ViewSFML view(phys, 10);
 
