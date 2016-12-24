@@ -8,11 +8,11 @@ ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleInde
 
 void ParticleShape::update()
 {
-    std::unique_ptr<sf::CircleShape> cs(new sf::CircleShape(partSys->GetRadius()));
+    std::unique_ptr<sf::CircleShape> cs(new sf::CircleShape(partSys->GetRadius()*pixelsToMeterRatio));
 
     const b2Vec2& b2PartPos = partSys->GetPositionBuffer()[particleIndex];
 
-    cs->setPosition(convert(b2PartPos));
+    cs->setPosition(convert(b2PartPos)*(float)pixelsToMeterRatio);
 
     sfShape = std::move(cs);
 
