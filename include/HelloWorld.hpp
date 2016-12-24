@@ -9,7 +9,7 @@ public:
     HelloWorld();
 protected:
 private:
-    void init();
+
 };
 
 #endif // HELLOWORLD_HPP

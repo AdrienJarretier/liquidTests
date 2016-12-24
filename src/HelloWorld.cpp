@@ -2,11 +2,6 @@
 
 HelloWorld::HelloWorld()
 {
-    init();
-}
-
-void HelloWorld::init()
-{
     b2BodyDef groundBodyDef;
 
     groundBodyDef.position.Set(0, -10);
@@ -35,3 +30,4 @@ void HelloWorld::init()
 
     body->CreateFixture(&fixtureDef);
 }
+

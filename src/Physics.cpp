@@ -14,6 +14,11 @@ Physics::Physics()
 {
 }
 
+Physics::~Physics()
+{
+
+}
+
 const b2World& Physics::getWorld() const
 {
     return world;

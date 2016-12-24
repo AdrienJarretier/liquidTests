@@ -22,6 +22,7 @@ public:
     static const int32 POSITION_ITERATIONS = 3;
 
     Physics();
+    virtual ~Physics() = 0;
 
     const b2World& getWorld() const;
 
@@ -32,8 +33,6 @@ protected:
     b2Vec2 gravity;
     b2World world;
 private:
-
-    virtual void init() = 0;
 
 };
 
