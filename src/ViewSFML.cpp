@@ -1,7 +1,7 @@
 #include "ViewSFML.hpp"
 
-ViewSFML::ViewSFML(Physics& phys)
-    :phys(phys),
+ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
+    :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio),
      t1(clock::now())
 {
 #ifdef DEBUG
@@ -18,7 +18,7 @@ ViewSFML::ViewSFML(Physics& phys)
 
         while(fixt != 0)
         {
-            this->shapes.push_back(Shape(fixt));
+            this->shapes.push_back(Shape(fixt, pixelsToMeterRatio));
 
             fixt = fixt->GetNext();
         }
@@ -54,7 +54,7 @@ void ViewSFML::launch()
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "SFML works!");
 
-    viewHeight = 100.0f;
+    viewHeight = windowHeight;
     viewWidth = viewHeight * aspectRatio;
 
 #ifdef DEBUG

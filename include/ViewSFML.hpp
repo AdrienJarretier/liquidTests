@@ -22,7 +22,7 @@ class ViewSFML
 
 public:
 
-    ViewSFML(Physics& phys);
+    ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio=1);
     void launch(unsigned int windowWidth, unsigned int windowHeight);
     void launch(unsigned int windowWidth, float aspectRatio=16.0f/9.0f);
 
@@ -40,6 +40,10 @@ private:
 
     float aspectRatio;
     unsigned int windowWidth, windowHeight;
+
+    // how much pixels in this representation
+    // represent 1 meter in the physical world
+    unsigned int pixelsToMeterRatio;
 
     sf::Vector2f viewCenter;
     float viewHeight, viewWidth;

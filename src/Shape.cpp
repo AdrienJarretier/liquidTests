@@ -5,8 +5,8 @@ sf::Vector2f Shape::convert(const b2Vec2& vec)
     return sf::Vector2f(vec.x, vec.y);
 }
 
-Shape::Shape(const b2Fixture* fixt)
-:fixt(fixt), type(fixt->GetType())
+Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
+:fixt(fixt), type(fixt->GetType()), pixelsToMeterRatio(pixelsToMeterRatio)
 {
     update();
 }
@@ -42,7 +42,8 @@ void Shape::update()
         {
             const b2Vec2& b2Vec = shape->GetVertex(i);
 
-            sf::Vector2f sfVec(b2Vec.x+b2VecBod.x, b2Vec.y+b2VecBod.y);
+            // the position of this vertex
+            sf::Vector2f sfVec((b2Vec.x+b2VecBod.x)*pixelsToMeterRatio, (b2Vec.y+b2VecBod.y)*pixelsToMeterRatio);
             cs->setPoint(i, sfVec);
         }
 

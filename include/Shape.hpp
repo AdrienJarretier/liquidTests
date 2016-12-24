@@ -12,7 +12,7 @@ class Shape
     public:
         static sf::Vector2f convert(const b2Vec2& vec);
 
-        Shape(const b2Fixture* fixt);
+        Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio);
 
         sf::Shape& getSfShape();
 
@@ -24,6 +24,9 @@ class Shape
         const sf::Color FILL_COLOR = sf::Color::Black;
         const b2Fixture* fixt;
         b2Shape::Type type;
+
+        unsigned int pixelsToMeterRatio;
+
         std::unique_ptr<sf::Shape> sfShape;
 };
 
