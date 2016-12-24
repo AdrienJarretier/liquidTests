@@ -11,6 +11,8 @@ int main()
 
     ViewSFML view(phys);
 
+//    view.setSpeedFactor(3);
+
     view.launch(540);
 
 }

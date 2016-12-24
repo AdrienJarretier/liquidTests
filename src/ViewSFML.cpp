@@ -2,7 +2,6 @@
 
 ViewSFML::ViewSFML(Physics& phys)
     :phys(phys),
-     MICROSECONDS_TIME_STEP(1.0f/60.0f*1000000),
      t1(clock::now())
 {
 #ifdef DEBUG
@@ -26,6 +25,8 @@ ViewSFML::ViewSFML(Physics& phys)
 
         bod = bod->GetNext();
     }
+
+    setSpeedFactor(1);
 }
 
 void ViewSFML::launch(unsigned int windowWidth, unsigned int windowHeight)
@@ -87,6 +88,12 @@ void ViewSFML::launch()
     }
 }
 
+void ViewSFML::setSpeedFactor(int32 fact)
+{
+    speedFactor = fact;
+    microTimeStep = Physics::TIME_STEP*1000000/speedFactor;
+}
+
 void ViewSFML::step()
 {
     clock::time_point t2(clock::now());
@@ -97,13 +104,13 @@ void ViewSFML::step()
 
     t1 = t2;
 
-    if(acc.count() > MICROSECONDS_TIME_STEP)
+    if(acc.count() > microTimeStep)
     {
 
 #ifdef DEBUG
 //        std::cout << acc.count() << std::endl;
 #endif
         phys.step();
-        acc -= microseconds(MICROSECONDS_TIME_STEP);
+        acc -= microseconds(microTimeStep);
     }
 }

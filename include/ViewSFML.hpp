@@ -26,6 +26,12 @@ public:
     void launch(unsigned int windowWidth, unsigned int windowHeight);
     void launch(unsigned int windowWidth, float aspectRatio=16.0f/9.0f);
 
+    /**
+    speeds up or slow down the simulation
+    for example a factor of 2 will run the simulation at 2 times the real speed
+    **/
+    void setSpeedFactor(int32 fact);
+
 protected:
 private:
 
@@ -38,12 +44,14 @@ private:
     sf::Vector2f viewCenter;
     float viewHeight, viewWidth;
 
-    void launch();
 
-    const int32 MICROSECONDS_TIME_STEP;
+    int32 speedFactor;
+    int32 microTimeStep;
 
     clock::time_point t1;
     microseconds acc;
+
+    void launch();
 
     void step();
 
