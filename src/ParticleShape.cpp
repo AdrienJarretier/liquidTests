@@ -1,7 +1,25 @@
 #include "ParticleShape.hpp"
 
-ParticleShape::ParticleShape(int32 particleIndex, unsigned int pixelsToMeterRatio)
-: Shape(0, pixelsToMeterRatio), particleIndex(particleIndex)
+ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio)
+    : Shape(pixelsToMeterRatio), partSys(partSys), particleIndex(particleIndex)
 {
     //ctor
 }
+
+void ParticleShape::update()
+{
+    std::unique_ptr<sf::CircleShape> cs(new sf::CircleShape(partSys->GetRadius()));
+
+    const b2Vec2& b2PartPos = partSys->GetPositionBuffer()[particleIndex];
+
+    cs->setPosition(convert(b2PartPos));
+
+    sfShape = std::move(cs);
+
+
+    sfShape->setOutlineColor(OUTLINE_COLOR);
+    sfShape->setOutlineThickness(OUTLINE_THICKNESS);
+    sfShape->setFillColor(FILL_COLOR);
+}
+
+

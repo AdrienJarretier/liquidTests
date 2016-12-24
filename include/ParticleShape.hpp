@@ -7,10 +7,15 @@
 class ParticleShape : public Shape
 {
 public:
-    ParticleShape(int32 particleIndex, unsigned int pixelsToMeterRatio);
+
+    ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio);
+
+    void update();
+
 protected:
 private:
 
+    const b2ParticleSystem* partSys;
     int32 particleIndex;
 };
 

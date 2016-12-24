@@ -11,6 +11,11 @@ Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
     update();
 }
 
+Shape::Shape(unsigned int pixelsToMeterRatio)
+    :pixelsToMeterRatio(pixelsToMeterRatio)
+{
+}
+
 sf::Shape& Shape::getSfShape()
 {
     return *sfShape;

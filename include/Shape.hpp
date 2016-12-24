@@ -18,6 +18,9 @@ class Shape
 
         void update();
     protected:
+
+        Shape(unsigned int pixelsToMeterRatio);
+
         const sf::Color OUTLINE_COLOR = sf::Color::Red;
         const float OUTLINE_THICKNESS = -1.0f;
         const sf::Color FILL_COLOR = sf::Color::Black;
