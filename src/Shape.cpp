@@ -6,7 +6,7 @@ sf::Vector2f Shape::convert(const b2Vec2& vec)
 }
 
 Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
-:fixt(fixt), type(fixt->GetType()), pixelsToMeterRatio(pixelsToMeterRatio)
+    :pixelsToMeterRatio(pixelsToMeterRatio), fixt(fixt),  type(fixt->GetType())
 {
     update();
 }

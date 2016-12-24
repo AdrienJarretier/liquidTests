@@ -21,6 +21,16 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
         bod = bod->GetNext();
     }
 
+//    const b2ParticleSystem * partSys = phys.getWorld().GetParticleSystemList();
+//
+//    while(partSys != 0)
+//    {
+//        #ifdef DEBUG
+//        std::cout << "particle system here" << std::endl;
+//        #endif // DEBUG
+//        partSys = partSys->GetNext();
+//    }
+
     setSpeedFactor(1);
 }
 
