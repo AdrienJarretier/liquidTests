@@ -17,7 +17,4 @@ FlowInto::FlowInto()
     partGpDef.shape = &partGpCirlce;
 
     particleSystem->CreateParticleGroup(partGpDef);
-
-    particleSystems.push_back(particleSystem);
-
 }

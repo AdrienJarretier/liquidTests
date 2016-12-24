@@ -34,7 +34,6 @@ public:
 protected:
     b2Vec2 gravity;
     b2World world;
-    std::list<b2ParticleSystem*> particleSystems;
 private:
 
 };
