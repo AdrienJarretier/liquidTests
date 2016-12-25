@@ -10,6 +10,8 @@ public:
 
     ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio);
 
+    sf::CircleShape& getSfShape();
+
     void update();
 
 protected:

@@ -6,6 +6,11 @@ ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleInde
     update();
 }
 
+sf::CircleShape& ParticleShape::getSfShape()
+{
+    return *sfShape;
+}
+
 void ParticleShape::update()
 {
     std::unique_ptr<sf::CircleShape> cs(new sf::CircleShape(partSys->GetRadius()*pixelsToMeterRatio));

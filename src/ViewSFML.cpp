@@ -31,7 +31,7 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
 
         for(int32 i=0; i<partSys->GetParticleCount(); ++i)
         {
-            this->shapes.push_back(ParticleShape(partSys,i,pixelsToMeterRatio));
+            this->particles.push_back(ParticleShape(partSys,i,pixelsToMeterRatio));
         }
 
         partSys = partSys->GetNext();
@@ -88,6 +88,12 @@ void ViewSFML::launch()
         window.clear();
 
         for(std::list<Shape>::iterator it=shapes.begin() ; it!=shapes.end() ; ++it)
+        {
+            it->update();
+            window.draw(it->getSfShape());
+        }
+
+        for(std::list<ParticleShape>::iterator it=particles.begin() ; it!=particles.end() ; ++it)
         {
             it->update();
             window.draw(it->getSfShape());

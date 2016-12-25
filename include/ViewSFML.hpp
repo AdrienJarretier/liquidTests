@@ -38,6 +38,7 @@ private:
 
     Physics& phys;
     std::list<Shape> shapes;
+    std::list<ParticleShape> particles;
 
     float aspectRatio;
     unsigned int windowWidth, windowHeight;
