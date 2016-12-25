@@ -5,6 +5,9 @@ sf::Vector2f Shape::convert(const b2Vec2& vec)
     return sf::Vector2f(vec.x, vec.y);
 }
 
+const sf::Color Shape::OUTLINE_COLOR = sf::Color::Red;
+const sf::Color Shape::FILL_COLOR = sf::Color::Black;
+
 Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
     :pixelsToMeterRatio(pixelsToMeterRatio), fixt(fixt),  type(fixt->GetType())
 {
@@ -25,6 +28,10 @@ void Shape::update()
 {
     if(type == b2Shape::e_circle)
     {
+//#ifdef DEBUG
+//        std::cout << "fixt : " << fixt << std::endl;
+//        std::cout << "pos : " << Physics::toStr(fixt->GetBody()->GetPosition()) << std::endl;
+//#endif // DEBUG
         std::cerr << "e_circle not handled" << std::endl;
     }
     else if(type == b2Shape::e_edge)

@@ -1,7 +1,7 @@
 #include "ParticleShape.hpp"
 
 ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio)
-    : Shape(pixelsToMeterRatio), partSys(partSys), particleIndex(particleIndex)
+    : partSys(partSys), particleIndex(particleIndex), pixelsToMeterRatio(pixelsToMeterRatio)
 {
     update();
 }
@@ -12,14 +12,14 @@ void ParticleShape::update()
 
     const b2Vec2& b2PartPos = partSys->GetPositionBuffer()[particleIndex];
 
-    cs->setPosition(convert(b2PartPos)*(float)pixelsToMeterRatio);
+    cs->setPosition(Shape::convert(b2PartPos)*(float)pixelsToMeterRatio);
 
     sfShape = std::move(cs);
 
 
-    sfShape->setOutlineColor(OUTLINE_COLOR);
-    sfShape->setOutlineThickness(OUTLINE_THICKNESS);
-    sfShape->setFillColor(FILL_COLOR);
+    sfShape->setOutlineColor(Shape::OUTLINE_COLOR);
+    sfShape->setOutlineThickness(Shape::OUTLINE_THICKNESS);
+    sfShape->setFillColor(Shape::FILL_COLOR);
 }
 
 

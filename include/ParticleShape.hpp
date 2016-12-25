@@ -4,7 +4,7 @@
 #include "Shape.hpp"
 
 
-class ParticleShape : public Shape
+class ParticleShape
 {
 public:
 
@@ -17,6 +17,9 @@ private:
 
     const b2ParticleSystem* partSys;
     int32 particleIndex;
+    unsigned int pixelsToMeterRatio;
+
+    std::unique_ptr<sf::CircleShape> sfShape;
 };
 
 #endif // PARTICLESHAPE_HPP
