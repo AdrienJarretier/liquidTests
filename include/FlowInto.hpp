@@ -3,6 +3,7 @@
 
 #include "Physics.hpp"
 
+#include <vector>
 
 class FlowInto : public Physics
 {

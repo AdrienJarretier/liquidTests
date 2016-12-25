@@ -17,4 +17,24 @@ FlowInto::FlowInto()
     partGpDef.shape = &partGpCirlce;
 
     particleSystem->CreateParticleGroup(partGpDef);
+
+
+    b2BodyDef bowlDef;
+    bowlDef.position.Set(0, 0);
+
+    b2Body* bowl = world.CreateBody(&bowlDef);
+
+    b2ChainShape bowlShape;
+
+    std::vector<b2Vec2> vertices;
+
+    vertices.push_back(b2Vec2(-20, 15));
+    vertices.push_back(b2Vec2(-15, 10));
+    vertices.push_back(b2Vec2(-15, 0));
+    vertices.push_back(b2Vec2(15, 0));
+    vertices.push_back(b2Vec2(15, 10));
+    vertices.push_back(b2Vec2(20, 15));
+    bowlShape.CreateChain(vertices.data(), vertices.size());
+
+    bowl->CreateFixture(&bowlShape, 0);
 }
