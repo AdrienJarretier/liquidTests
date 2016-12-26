@@ -11,12 +11,7 @@ const sf::Color Shape::FILL_COLOR = sf::Color::Black;
 Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
     :pixelsToMeterRatio(pixelsToMeterRatio), fixt(fixt),  type(fixt->GetType())
 {
-    update();
-}
-
-Shape::Shape(unsigned int pixelsToMeterRatio)
-    :pixelsToMeterRatio(pixelsToMeterRatio)
-{
+//    update();
 }
 
 sf::Shape& Shape::getSfShape()
@@ -24,7 +19,7 @@ sf::Shape& Shape::getSfShape()
     return *sfShape;
 }
 
-void Shape::update()
+void Shape::update(sf::RenderWindow& window)
 {
     if(type == b2Shape::e_circle)
     {
@@ -61,15 +56,38 @@ void Shape::update()
 
         sfShape = std::move(cs);
 
-
         sfShape->setOutlineColor(OUTLINE_COLOR);
         sfShape->setOutlineThickness(OUTLINE_THICKNESS);
         sfShape->setFillColor(FILL_COLOR);
+
+        window.draw(*sfShape);
     }
     else if(type == b2Shape::e_chain)
     {
-        std::cerr << "e_chain not handled" << std::endl;
+        const b2ChainShape* shape = (const b2ChainShape*)fixt->GetShape();
 
+        int32 vertexCount = shape->m_count;
+
+//#ifdef DEBUG
+//        std::cout << "vertexCount : " << vertexCount << std::endl;
+//#endif // DEBUG
+
+        sf::VertexArray vertices(sf::LineStrip);
+
+        const b2Body* bod = fixt->GetBody();
+        const b2Vec2& b2VecBod = bod->GetPosition();
+        for (int32 i=0; i<vertexCount; ++i)
+        {
+            const b2Vec2& b2Vec = shape->m_vertices[i];
+
+            // the position of this vertex
+            sf::Vector2f sfVec((b2Vec.x+b2VecBod.x)*pixelsToMeterRatio, (b2Vec.y+b2VecBod.y)*pixelsToMeterRatio);
+            vertices.append(sf::Vertex(sfVec, sf::Color::White));
+        }
+
+
+
+        window.draw(vertices);
     }
     else if(type == b2Shape::e_typeCount)
     {
@@ -77,8 +95,6 @@ void Shape::update()
 
     }
 }
-
-
 
 
 

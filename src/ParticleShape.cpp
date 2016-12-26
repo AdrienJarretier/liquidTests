@@ -3,7 +3,7 @@
 ParticleShape::ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio)
     : partSys(partSys), particleIndex(particleIndex), pixelsToMeterRatio(pixelsToMeterRatio)
 {
-    update();
+//    update();
 }
 
 sf::CircleShape& ParticleShape::getSfShape()
@@ -11,7 +11,7 @@ sf::CircleShape& ParticleShape::getSfShape()
     return *sfShape;
 }
 
-void ParticleShape::update()
+void ParticleShape::update(sf::RenderWindow& window)
 {
     std::unique_ptr<sf::CircleShape> cs(new sf::CircleShape(partSys->GetRadius()*pixelsToMeterRatio));
 
@@ -25,6 +25,8 @@ void ParticleShape::update()
     sfShape->setOutlineColor(Shape::OUTLINE_COLOR);
     sfShape->setOutlineThickness(Shape::OUTLINE_THICKNESS);
     sfShape->setFillColor(Shape::FILL_COLOR);
+
+    window.draw(*sfShape);
 }
 
 

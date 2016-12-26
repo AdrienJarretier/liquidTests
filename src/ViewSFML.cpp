@@ -89,14 +89,12 @@ void ViewSFML::launch()
 
         for(std::list<Shape>::iterator it=shapes.begin() ; it!=shapes.end() ; ++it)
         {
-            it->update();
-            window.draw(it->getSfShape());
+            it->update(window);
         }
 
         for(std::list<ParticleShape>::iterator it=particles.begin() ; it!=particles.end() ; ++it)
         {
-            it->update();
-            window.draw(it->getSfShape());
+            it->update(window);
         }
 
         window.display();

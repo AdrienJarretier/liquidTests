@@ -10,6 +10,7 @@
 
 #include <iostream>
 #include <memory>
+#include <vector>
 
 class Shape
 {
@@ -20,7 +21,7 @@ public:
 
     sf::Shape& getSfShape();
 
-    void update();
+    void update(sf::RenderWindow& window);
 
     static const sf::Color OUTLINE_COLOR;
     static constexpr float OUTLINE_THICKNESS = -1.0f;
@@ -28,14 +29,11 @@ public:
 
 protected:
 
-    Shape(unsigned int pixelsToMeterRatio);
-
     unsigned int pixelsToMeterRatio;
     std::unique_ptr<sf::Shape> sfShape;
 private:
     const b2Fixture* fixt;
     b2Shape::Type type;
-
 
 };
 

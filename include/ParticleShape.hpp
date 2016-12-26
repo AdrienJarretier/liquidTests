@@ -12,7 +12,7 @@ public:
 
     sf::CircleShape& getSfShape();
 
-    void update();
+    void update(sf::RenderWindow& window);
 
 protected:
 private:
