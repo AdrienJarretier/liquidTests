@@ -1,5 +1,19 @@
 #include "ViewSFML.hpp"
 
+sf::Font ViewSFML::textFont;
+
+bool loaded = ViewSFML::init();
+
+bool ViewSFML::init()
+{
+    bool fontLoaded = textFont.loadFromFile 	( 	"resources/fonts/RHINOFON.TTF"	);
+#ifdef DEBUG
+    std::cout << "fontLoaded : " << fontLoaded << std::endl;
+#endif // DEBUG
+
+    return fontLoaded;
+}
+
 ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
     :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio),
      t1(clock::now())
@@ -25,9 +39,9 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
 
     while(partSys != 0)
     {
-        #ifdef DEBUG
+#ifdef DEBUG
         std::cout << "particle system here" << std::endl;
-        #endif // DEBUG
+#endif // DEBUG
 
         for(int32 i=0; i<partSys->GetParticleCount(); ++i)
         {
@@ -74,10 +88,14 @@ void ViewSFML::launch()
 
     sf::View sfView(sf::FloatRect(-viewWidth/2.0f + viewCenter.x, viewHeight/2.0f + viewCenter.y, viewWidth, -viewHeight));
 
-    window.setView(sfView);
+    clock::time_point fpsT1(clock::now());
+
+    unsigned int framesThisSecond = 0, fps=0;
 
     while (window.isOpen())
     {
+        window.setView(sfView);
+
         sf::Event event;
         while (window.pollEvent(event))
         {
@@ -97,7 +115,36 @@ void ViewSFML::launch()
             it->update(window);
         }
 
+
+        clock::time_point fpsT2(clock::now());
+        microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
+        if(fpsDt.count() >= 1000000)
+        {
+            #ifdef DEBUG
+            std::cout << "framesThisSecond : " << framesThisSecond << std::endl;
+            #endif // DEBUG
+            fps = framesThisSecond;
+            framesThisSecond = 0;
+            fpsT1 = fpsT2;
+        }
+
+        std::stringstream ss;
+
+        ss << "fps : " << fps;
+
+        sf::Text fpsText(ss.str(), textFont);
+
+        fpsText.setFillColor(sf::Color::White);
+
+//        window.setDe
+
+        window.setView(window.getDefaultView());
+
+        window.draw(fpsText);
+
         window.display();
+
+        ++framesThisSecond;
 
         step();
     }

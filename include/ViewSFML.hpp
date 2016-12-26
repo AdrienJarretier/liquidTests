@@ -23,6 +23,10 @@ class ViewSFML
 
 public:
 
+    static sf::Font textFont;
+
+    static bool init();
+
     ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio=1);
     void launch(unsigned int windowWidth, unsigned int windowHeight);
     void launch(unsigned int windowWidth, float aspectRatio=16.0f/9.0f);
