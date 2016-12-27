@@ -104,6 +104,8 @@ void ViewSFML::launch()
                 window.close();
         }
 
+        step();
+
         window.clear();
 
         for(std::list<Shape>::iterator it=shapes.begin() ; it!=shapes.end() ; ++it)
@@ -146,8 +148,6 @@ void ViewSFML::launch()
         window.display();
 
         ++framesCount;
-
-        step();
     }
 }
 
@@ -157,7 +157,7 @@ void ViewSFML::setSpeedFactor(int32 fact)
     microTimeStep = Physics::TIME_STEP*1000000/speedFactor;
 }
 
-void ViewSFML::step()
+bool ViewSFML::step()
 {
     clock::time_point t2(clock::now());
 
@@ -175,5 +175,8 @@ void ViewSFML::step()
 #endif
         phys.step();
         acc -= microseconds(microTimeStep);
+
+        return true;
     }
+    return false;
 }
