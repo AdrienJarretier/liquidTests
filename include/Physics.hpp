@@ -21,14 +21,16 @@ public:
 
     static const int32 VELOCITY_ITERATIONS = 8;
     static const int32 POSITION_ITERATIONS = 3;
-    static const int32 PARTICLES_ITERATIONS = 1;
 
     Physics();
     virtual ~Physics() = 0;
 
     const b2World& getWorld() const;
 
-    void step();
+    // this is performing th step in the physical simulation
+    // override this in your test if you want to change the number of iterations
+    // or even add particles like in FlowInto
+    virtual void step();
 
 //    const b2Vec2& getGroundPos();
 protected:

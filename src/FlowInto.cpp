@@ -38,3 +38,10 @@ FlowInto::FlowInto()
 
     bowl->CreateFixture(&bowlShape, 0);
 }
+
+
+void FlowInto::step()
+{
+    world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS, PARTICLES_ITERATIONS);
+}
+

@@ -9,6 +9,8 @@ class FlowInto : public Physics
 {
 public:
     FlowInto();
+    static const int32 PARTICLES_ITERATIONS = 6;
+    void step();
 protected:
 private:
 };
