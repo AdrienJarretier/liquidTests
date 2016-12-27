@@ -67,6 +67,15 @@ private:
     // returns true if physics has been stepped, false otherwise
     bool step();
 
+
+
+    clock::time_point fpsT1;
+
+    const unsigned int FPS_COUNTER_UPDATES_PER_SEC = 3;
+    unsigned int framesCount, fps;
+    void initFps();
+    void countFps(sf::RenderWindow& window);
+
 };
 
 #endif // VIEWSFML_HPP

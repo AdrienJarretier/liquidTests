@@ -71,6 +71,42 @@ void ViewSFML::launch(unsigned int windowHeight, float aspectRatio)
     launch();
 }
 
+void ViewSFML::countFps(sf::RenderWindow& window)
+{
+    clock::time_point fpsT2(clock::now());
+    microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
+    if(fpsDt.count() >= 1000000/FPS_COUNTER_UPDATES_PER_SEC)
+    {
+#ifdef DEBUG
+        std::cout << "framesCount : " << framesCount << std::endl;
+#endif // DEBUG
+        fps = framesCount*FPS_COUNTER_UPDATES_PER_SEC;
+        framesCount = 0;
+        fpsT1 = fpsT2;
+    }
+
+    std::stringstream ss;
+
+    ss << "fps : " << fps;
+
+    sf::Text fpsText(ss.str(), textFont);
+
+    fpsText.setFillColor(sf::Color::White);
+
+    window.setView(window.getDefaultView());
+
+    window.draw(fpsText);
+
+    ++framesCount;
+}
+
+void ViewSFML::initFps()
+{
+    fpsT1 = clock::now();
+    framesCount = 0;
+    fps=0;
+}
+
 void ViewSFML::launch()
 {
 #ifdef DEBUG
@@ -88,10 +124,8 @@ void ViewSFML::launch()
 
     sf::View sfView(sf::FloatRect(-viewWidth/2.0f + viewCenter.x, viewHeight/2.0f + viewCenter.y, viewWidth, -viewHeight));
 
-    clock::time_point fpsT1(clock::now());
 
-    const unsigned int FPS_COUNTER_UPDATES_PER_SEC = 3;
-    unsigned int framesCount = 0, fps=0;
+    initFps();
 
     while (window.isOpen())
     {
@@ -118,36 +152,9 @@ void ViewSFML::launch()
             it->update(window);
         }
 
-
-        clock::time_point fpsT2(clock::now());
-        microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
-        if(fpsDt.count() >= 1000000/FPS_COUNTER_UPDATES_PER_SEC)
-        {
-            #ifdef DEBUG
-            std::cout << "framesCount : " << framesCount << std::endl;
-            #endif // DEBUG
-            fps = framesCount*FPS_COUNTER_UPDATES_PER_SEC;
-            framesCount = 0;
-            fpsT1 = fpsT2;
-        }
-
-        std::stringstream ss;
-
-        ss << "fps : " << fps;
-
-        sf::Text fpsText(ss.str(), textFont);
-
-        fpsText.setFillColor(sf::Color::White);
-
-//        window.setDe
-
-        window.setView(window.getDefaultView());
-
-        window.draw(fpsText);
+        countFps(window);
 
         window.display();
-
-        ++framesCount;
     }
 }
 

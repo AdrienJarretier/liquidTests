@@ -9,7 +9,7 @@ FlowInto::FlowInto()
 
     b2CircleShape partGpCirlce;
 
-    partGpCirlce.m_radius = 10.0f;
+    partGpCirlce.m_radius = 15.0f;
 
     b2ParticleGroupDef partGpDef;
 
