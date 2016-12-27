@@ -1,19 +1,5 @@
 #include "ViewSFML.hpp"
 
-sf::Font ViewSFML::textFont;
-
-bool loaded = ViewSFML::init();
-
-bool ViewSFML::init()
-{
-    bool fontLoaded = textFont.loadFromFile 	( 	"resources/fonts/RHINOFON.TTF"	);
-#ifdef DEBUG
-    std::cout << "fontLoaded : " << fontLoaded << std::endl;
-#endif // DEBUG
-
-    return fontLoaded;
-}
-
 ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
     :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio),
      t1(clock::now())
@@ -71,42 +57,6 @@ void ViewSFML::launch(unsigned int windowHeight, float aspectRatio)
     launch();
 }
 
-void ViewSFML::countFps(sf::RenderWindow& window)
-{
-    clock::time_point fpsT2(clock::now());
-    microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
-    if(fpsDt.count() >= 1000000/FPS_COUNTER_UPDATES_PER_SEC)
-    {
-#ifdef DEBUG
-        std::cout << "framesCount : " << framesCount << std::endl;
-#endif // DEBUG
-        fps = framesCount*FPS_COUNTER_UPDATES_PER_SEC;
-        framesCount = 0;
-        fpsT1 = fpsT2;
-    }
-
-    std::stringstream ss;
-
-    ss << "fps : " << fps;
-
-    sf::Text fpsText(ss.str(), textFont);
-
-    fpsText.setFillColor(sf::Color::White);
-
-    window.setView(window.getDefaultView());
-
-    window.draw(fpsText);
-
-    ++framesCount;
-}
-
-void ViewSFML::initFps()
-{
-    fpsT1 = clock::now();
-    framesCount = 0;
-    fps=0;
-}
-
 void ViewSFML::launch()
 {
 #ifdef DEBUG
@@ -123,9 +73,6 @@ void ViewSFML::launch()
 #endif // DEBUG
 
     sf::View sfView(sf::FloatRect(-viewWidth/2.0f + viewCenter.x, viewHeight/2.0f + viewCenter.y, viewWidth, -viewHeight));
-
-
-    initFps();
 
     while (window.isOpen())
     {
@@ -152,7 +99,7 @@ void ViewSFML::launch()
             it->update(window);
         }
 
-        countFps(window);
+        fps.countFps(window);
 
         window.display();
     }

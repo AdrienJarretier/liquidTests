@@ -5,6 +5,7 @@
 #include <iostream>
 #endif
 
+#include "FpsCounter.hpp"
 #include "Physics.hpp"
 #include "Shape.hpp"
 #include "ParticleShape.hpp"
@@ -22,10 +23,6 @@ class ViewSFML
     using clock = high_resolution_clock;
 
 public:
-
-    static sf::Font textFont;
-
-    static bool init();
 
     ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio=1);
     void launch(unsigned int windowWidth, unsigned int windowHeight);
@@ -67,15 +64,7 @@ private:
     // returns true if physics has been stepped, false otherwise
     bool step();
 
-
-
-    clock::time_point fpsT1;
-
-    const unsigned int FPS_COUNTER_UPDATES_PER_SEC = 3;
-    unsigned int framesCount, fps;
-    void initFps();
-    void countFps(sf::RenderWindow& window);
-
+    FpsCounter fps;
 };
 
 #endif // VIEWSFML_HPP
