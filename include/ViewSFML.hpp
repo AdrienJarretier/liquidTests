@@ -31,6 +31,7 @@ public:
     /**
     speeds up or slow down the simulation
     for example a factor of 2 will run the simulation at 2 times the real speed
+    if you want to view the simulation at max speed, just set fact at a negative value (for ex -1)
     **/
     void setSpeedFactor(float fact);
 

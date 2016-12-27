@@ -109,6 +109,9 @@ void ViewSFML::setSpeedFactor(float fact)
 {
     speedFactor = fact;
     microTimeStep = Physics::TIME_STEP*1000000/speedFactor;
+#ifdef DEBUG
+    std::cout << "microTimeStep : " << microTimeStep << std::endl;
+#endif // DEBUG
 }
 
 bool ViewSFML::step()
