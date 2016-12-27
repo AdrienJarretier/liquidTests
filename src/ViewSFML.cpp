@@ -105,7 +105,7 @@ void ViewSFML::launch()
     }
 }
 
-void ViewSFML::setSpeedFactor(int32 fact)
+void ViewSFML::setSpeedFactor(float fact)
 {
     speedFactor = fact;
     microTimeStep = Physics::TIME_STEP*1000000/speedFactor;

@@ -32,7 +32,7 @@ public:
     speeds up or slow down the simulation
     for example a factor of 2 will run the simulation at 2 times the real speed
     **/
-    void setSpeedFactor(int32 fact);
+    void setSpeedFactor(float fact);
 
 protected:
 private:
@@ -52,7 +52,7 @@ private:
     float viewHeight, viewWidth;
 
 
-    int32 speedFactor;
+    float speedFactor;
     int32 microTimeStep;
 
     clock::time_point t1;
