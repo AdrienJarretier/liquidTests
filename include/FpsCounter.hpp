@@ -27,8 +27,10 @@ protected:
 private:
 
     clock::time_point fpsT1;
-    const unsigned int FPS_COUNTER_UPDATES_PER_SEC = 3;
+    static const unsigned int FPS_COUNTER_UPDATES_PER_SEC = 3;
+    static constexpr unsigned int FPS_COUNTER_UPDATE_TIME = 1000000/FPS_COUNTER_UPDATES_PER_SEC;
     unsigned int framesCount, fps;
+    sf::Text fpsText;
 };
 
 #endif // FPSCOUNTER_HPP

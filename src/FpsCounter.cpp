@@ -19,13 +19,16 @@ FpsCounter::FpsCounter()
     fpsT1 = clock::now();
     framesCount = 0;
     fps=0;
+
+    fpsText.setFont(textFont);
+    fpsText.setFillColor(sf::Color::White);
 }
 
 void FpsCounter::countFps(sf::RenderWindow& window)
 {
     clock::time_point fpsT2(clock::now());
     microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
-    if(fpsDt.count() >= 1000000/FPS_COUNTER_UPDATES_PER_SEC)
+    if(fpsDt.count() >= FPS_COUNTER_UPDATE_TIME)
     {
 #ifdef DEBUG
         std::cout << "framesCount : " << framesCount << std::endl;
@@ -39,9 +42,8 @@ void FpsCounter::countFps(sf::RenderWindow& window)
 
     ss << "fps : " << fps;
 
-    sf::Text fpsText(ss.str(), textFont);
+    fpsText.setString(ss.str());
 
-    fpsText.setFillColor(sf::Color::White);
 
     window.setView(window.getDefaultView());
 
