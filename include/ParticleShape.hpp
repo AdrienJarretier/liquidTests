@@ -8,7 +8,7 @@ class ParticleShape
 {
 public:
 
-    ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, unsigned int pixelsToMeterRatio);
+    ParticleShape(const b2ParticleSystem* partSys, int32 particleIndex, float pixelsToMeterRatio);
 
     sf::CircleShape& getSfShape();
 
@@ -19,7 +19,7 @@ private:
 
     const b2ParticleSystem* partSys;
     int32 particleIndex;
-    unsigned int pixelsToMeterRatio;
+    float pixelsToMeterRatio;
 
     std::unique_ptr<sf::CircleShape> sfShape;
 };

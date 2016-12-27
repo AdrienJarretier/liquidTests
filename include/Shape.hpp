@@ -17,7 +17,7 @@ class Shape
 public:
     static sf::Vector2f convert(const b2Vec2& vec);
 
-    Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio);
+    Shape(const b2Fixture* fixt, float pixelsToMeterRatio);
 
     sf::Shape& getSfShape();
 
@@ -29,7 +29,7 @@ public:
 
 protected:
 
-    unsigned int pixelsToMeterRatio;
+    float pixelsToMeterRatio;
     std::unique_ptr<sf::Shape> sfShape;
 private:
     const b2Fixture* fixt;

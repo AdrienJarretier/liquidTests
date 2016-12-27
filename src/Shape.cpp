@@ -8,7 +8,7 @@ sf::Vector2f Shape::convert(const b2Vec2& vec)
 const sf::Color Shape::OUTLINE_COLOR = sf::Color::Red;
 const sf::Color Shape::FILL_COLOR = sf::Color::Black;
 
-Shape::Shape(const b2Fixture* fixt, unsigned int pixelsToMeterRatio)
+Shape::Shape(const b2Fixture* fixt, float pixelsToMeterRatio)
     :pixelsToMeterRatio(pixelsToMeterRatio), fixt(fixt),  type(fixt->GetType())
 {
 //    update();

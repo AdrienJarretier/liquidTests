@@ -8,11 +8,11 @@ using namespace std;
 
 int main()
 {
-    HelloWorld phys;
+    FlowInto phys;
 
     ViewSFML view(phys, 10);
 
-    view.setSpeedFactor(-1);
+    view.setSpeedFactor(1);
 
     view.launch(900);
 
