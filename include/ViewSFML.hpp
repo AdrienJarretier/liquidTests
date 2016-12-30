@@ -11,6 +11,7 @@
 #include "ParticleShape.hpp"
 
 #include <SFML/Graphics.hpp>
+#include <SFML/OpenGL.hpp>
 
 #include <chrono>
 #include <list>
