@@ -21,21 +21,21 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
         bod = bod->GetNext();
     }
 
-//    const b2ParticleSystem * partSys = phys.getWorld().GetParticleSystemList();
-//
-//    while(partSys != 0)
-//    {
-//#ifdef DEBUG
-//        std::cout << "particle system here" << std::endl;
-//#endif // DEBUG
-//
-//        for(int32 i=0; i<partSys->GetParticleCount(); ++i)
-//        {
-//            this->particles.push_back(ParticleShape(partSys,i,pixelsToMeterRatio));
-//        }
-//
-//        partSys = partSys->GetNext();
-//    }
+    const b2ParticleSystem * partSys = phys.getWorld().GetParticleSystemList();
+
+    while(partSys != 0)
+    {
+#ifdef DEBUG
+        std::cout << "particle system here" << std::endl;
+#endif // DEBUG
+
+        for(int32 i=0; i<partSys->GetParticleCount(); ++i)
+        {
+            this->particles.push_back(ParticleShape(partSys,i,pixelsToMeterRatio));
+        }
+
+        partSys = partSys->GetNext();
+    }
 
     setSpeedFactor(1);
 }
@@ -94,13 +94,9 @@ void ViewSFML::launch()
             it->update(window);
         }
 
-        const b2ParticleSystem * partSys = phys.getWorld().GetParticleSystemList();
-
-        while(partSys != 0)
+        for(std::list<ParticleShape>::iterator it=particles.begin() ; it!=particles.end() ; ++it)
         {
-
-
-            partSys = partSys->GetNext();
+            it->update(window);
         }
 
         fps.countFps(window);
