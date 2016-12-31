@@ -1,18 +1,18 @@
-#ifndef FALLINGBUBBLE_HPP
-#define FALLINGBUBBLE_HPP
+#ifndef FLOWINTO_HPP
+#define FLOWINTO_HPP
 
 #include "Physics.hpp"
 
 #include <vector>
 
-class FallingBubble : public Physics
+class FlowInto : public Physics
 {
 public:
-    FallingBubble();
+    FlowInto();
     static const int32 PARTICLES_ITERATIONS = 1;
     void step();
 protected:
 private:
 };
 
-#endif // FALLINGBUBBLE_HPP
+#endif // FLOWINTO_HPP
