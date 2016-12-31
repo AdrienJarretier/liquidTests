@@ -7,9 +7,11 @@ FlowInto::FlowInto()
 
     b2ParticleSystem* particleSystem = world.CreateParticleSystem(&partSysDef);
 
+    particleSystem->SetMaxParticleCount(10000);
+
     b2CircleShape partGpCirlce;
 
-    partGpCirlce.m_radius = 20.0f;
+    partGpCirlce.m_radius = 30.0f;
 
     b2ParticleGroupDef partGpDef;
 
@@ -39,7 +41,7 @@ FlowInto::FlowInto()
     bowl->CreateFixture(&bowlShape, 0);
 
     #ifdef DEBUG
-    std::cout << "particles count : "  << partGpDef.shapeCount << std::endl;
+    std::cout << "particles count : "  << particleSystem->GetParticleCount() << std::endl;
     #endif // DEBUG
 }
 
