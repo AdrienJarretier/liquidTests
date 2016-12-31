@@ -1,6 +1,6 @@
-#include "FlowInto.hpp"
+#include "FallingBubble.hpp"
 
-FlowInto::FlowInto()
+FallingBubble::FallingBubble()
 {
     b2ParticleSystemDef partSysDef;
     partSysDef.radius = 0.35f;
@@ -46,7 +46,7 @@ FlowInto::FlowInto()
 }
 
 
-void FlowInto::step()
+void FallingBubble::step()
 {
     world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS, PARTICLES_ITERATIONS);
 }

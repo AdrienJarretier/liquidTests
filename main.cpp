@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 
-    FlowInto phys;
+    FallingBubble phys;
 
 //    cout << "part iterations : " << phys.getWorld().CalculateReasonableParticleIterations(Physics::TIME_STEP) << endl;
 //

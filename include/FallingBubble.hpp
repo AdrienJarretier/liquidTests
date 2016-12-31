@@ -5,10 +5,10 @@
 
 #include <vector>
 
-class FlowInto : public Physics
+class FallingBubble : public Physics
 {
 public:
-    FlowInto();
+    FallingBubble();
     static const int32 PARTICLES_ITERATIONS = 1;
     void step();
 protected:
