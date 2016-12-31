@@ -9,7 +9,7 @@ FlowInto::FlowInto()
 
     b2CircleShape partGpCirlce;
 
-    partGpCirlce.m_radius = 15.0f;
+    partGpCirlce.m_radius = 20.0f;
 
     b2ParticleGroupDef partGpDef;
 
@@ -28,15 +28,19 @@ FlowInto::FlowInto()
 
     std::vector<b2Vec2> vertices;
 
-    vertices.push_back(b2Vec2(-20, 15));
-    vertices.push_back(b2Vec2(-15, 10));
+    vertices.push_back(b2Vec2(-20, 5));
     vertices.push_back(b2Vec2(-15, 0));
+    vertices.push_back(b2Vec2(-15, -10));
+    vertices.push_back(b2Vec2(15, -10));
     vertices.push_back(b2Vec2(15, 0));
-    vertices.push_back(b2Vec2(15, 10));
-    vertices.push_back(b2Vec2(20, 15));
+    vertices.push_back(b2Vec2(20, 5));
     bowlShape.CreateChain(vertices.data(), vertices.size());
 
     bowl->CreateFixture(&bowlShape, 0);
+
+    #ifdef DEBUG
+    std::cout << "particles count : "  << partGpDef.shapeCount << std::endl;
+    #endif // DEBUG
 }
 
 

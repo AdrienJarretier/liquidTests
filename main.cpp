@@ -17,6 +17,6 @@ int main()
 
     view.setSpeedFactor(1);
 
-    view.launch(900);
+    view.launch(720);
 
 }

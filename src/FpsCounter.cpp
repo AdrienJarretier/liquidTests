@@ -30,9 +30,9 @@ void FpsCounter::countFps(sf::RenderWindow& window)
     microseconds fpsDt = duration_cast<microseconds>(fpsT2 - fpsT1);
     if(fpsDt.count() >= FPS_COUNTER_UPDATE_TIME)
     {
-#ifdef DEBUG
-        std::cout << "framesCount : " << framesCount << std::endl;
-#endif // DEBUG
+//#ifdef DEBUG
+//        std::cout << "framesCount : " << framesCount << std::endl;
+//#endif // DEBUG
         fps = framesCount*FPS_COUNTER_UPDATES_PER_SEC;
         framesCount = 0;
         fpsT1 = fpsT2;
