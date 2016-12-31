@@ -1,4 +1,4 @@
-#include "ViewSFML.hpp"
+#include "FlowIntoView.hpp"
 
 #include "tests.hpp"
 
@@ -13,7 +13,7 @@ int main()
 
 //    cout << "part iterations : " << phys.getWorld().CalculateReasonableParticleIterations(Physics::TIME_STEP) << endl;
 //
-    ViewSFML view(phys, 10);
+    FlowIntoView view(10);
 
     view.setSpeedFactor(1);
 

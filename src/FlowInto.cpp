@@ -5,8 +5,9 @@ FlowInto::FlowInto()
     b2ParticleSystemDef partSysDef;
     partSysDef.radius = 0.35f;
 
-    b2ParticleSystem* particleSystem = world.CreateParticleSystem(&partSysDef);
+    particleSystem = world.CreateParticleSystem(&partSysDef);
 
+    partDef.position.Set(0, 0);
 
     b2BodyDef bowlDef;
     bowlDef.position.Set(0, 0);
@@ -26,6 +27,14 @@ FlowInto::FlowInto()
     bowlShape.CreateChain(vertices.data(), vertices.size());
 
     bowl->CreateFixture(&bowlShape, 0);
+}
+
+int32 FlowInto::newParticle()
+{
+    return particleSystem->CreateParticle(partDef);
+#ifdef DEBUG
+    std::cout << "particles count : "  << particleSystem->GetParticleCount() << std::endl;
+#endif // DEBUG
 }
 
 

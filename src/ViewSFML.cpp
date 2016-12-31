@@ -23,6 +23,8 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
 
     const b2ParticleSystem * partSys = phys.getWorld().GetParticleSystemList();
 
+
+
     while(partSys != 0)
     {
 #ifdef DEBUG

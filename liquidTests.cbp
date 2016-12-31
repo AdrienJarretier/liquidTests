@@ -11,7 +11,6 @@
 				<Option object_output="obj/Debug/" />
 				<Option type="1" />
 				<Option compiler="gcc" />
-				<Option use_console_runner="0" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-DDEBUG" />
@@ -45,7 +44,9 @@
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
 		</Linker>
+		<Unit filename="include/FallingBubble.hpp" />
 		<Unit filename="include/FlowInto.hpp" />
+		<Unit filename="include/FlowIntoView.hpp" />
 		<Unit filename="include/FpsCounter.hpp" />
 		<Unit filename="include/HelloWorld.hpp" />
 		<Unit filename="include/ParticleShape.hpp" />
@@ -53,7 +54,9 @@
 		<Unit filename="include/Shape.hpp" />
 		<Unit filename="include/ViewSFML.hpp" />
 		<Unit filename="main.cpp" />
+		<Unit filename="src/FallingBubble.cpp" />
 		<Unit filename="src/FlowInto.cpp" />
+		<Unit filename="src/FlowIntoView.cpp" />
 		<Unit filename="src/FpsCounter.cpp" />
 		<Unit filename="src/HelloWorld.cpp" />
 		<Unit filename="src/ParticleShape.cpp" />

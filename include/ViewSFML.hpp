@@ -36,6 +36,10 @@ public:
     void setSpeedFactor(float fact);
 
 protected:
+
+    // steps the physics engine if enough time has passed
+    // returns true if physics has been stepped, false otherwise
+    virtual bool step();
 private:
 
     Physics& phys;
@@ -60,10 +64,6 @@ private:
     microseconds acc;
 
     void launch();
-
-    // steps the physics engine if enough time has passed
-    // returns true if physics has been stepped, false otherwise
-    bool step();
 
     FpsCounter fps;
 };
