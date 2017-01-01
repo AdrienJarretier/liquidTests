@@ -1,8 +1,7 @@
 #include "ViewSFML.hpp"
 
 ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
-    :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio),
-     t1(clock::now())
+    :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio)
 {
 #ifdef DEBUG
     std::cout  << "ViewSFML constr" << std::endl;
@@ -78,6 +77,8 @@ void ViewSFML::launch()
 #endif // DEBUG
 
     sf::View sfView(sf::FloatRect(-viewWidth/2.0f + viewCenter.x, viewHeight/2.0f + viewCenter.y, viewWidth, -viewHeight));
+
+    t1 = clock::now();
 
     while (window.isOpen())
     {
