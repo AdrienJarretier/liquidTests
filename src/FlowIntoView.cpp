@@ -1,16 +1,18 @@
 #include "FlowIntoView.hpp"
 
 FlowIntoView::FlowIntoView(unsigned int pixelsToMeterRatio)
-    :flowPhys(new FlowInto), ViewSFML(*flowPhys, pixelsToMeterRatio)
+    :ViewSFML(flowPhys, pixelsToMeterRatio)
 {
-    //ctor
+#ifdef DEBUG
+    std::cout  << "FlowIntoView constr" << std::endl;
+#endif // DEBUG
 }
 
 bool FlowIntoView::step()
 {
-    #ifdef DEBUG
+#ifdef DEBUG
     std::cout  << "step" << std::endl;
-    #endif // DEBUG
+#endif // DEBUG
 
     return ViewSFML::step();
 }

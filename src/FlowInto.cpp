@@ -2,6 +2,9 @@
 
 FlowInto::FlowInto()
 {
+#ifdef DEBUG
+    std::cout  << "FlowInto constr" << std::endl;
+#endif // DEBUG
     b2ParticleSystemDef partSysDef;
     partSysDef.radius = 0.35f;
 

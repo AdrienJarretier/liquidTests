@@ -4,6 +4,9 @@ ViewSFML::ViewSFML(Physics& phys, unsigned int pixelsToMeterRatio)
     :phys(phys), pixelsToMeterRatio(pixelsToMeterRatio),
      t1(clock::now())
 {
+#ifdef DEBUG
+    std::cout  << "ViewSFML constr" << std::endl;
+#endif // DEBUG
     const b2Body* bod = phys.getWorld().GetBodyList();
 
     // instanciates a Shape object for each fixture of each physics body

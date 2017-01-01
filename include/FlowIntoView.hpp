@@ -8,12 +8,14 @@
 
 class FlowIntoView : public ViewSFML
 {
+private:
+    FlowInto flowPhys;
+
 public:
     FlowIntoView(unsigned int pixelsToMeterRatio=1);
 protected:
 private:
 
-    FlowInto *flowPhys;
 
     // steps the physics engine if enough time has passed
     // returns true if physics has been stepped, false otherwise
