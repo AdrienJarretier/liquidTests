@@ -2,6 +2,7 @@
 
 FlowIntoView::FlowIntoView(FlowInto& flowPhys, unsigned int pixelsToMeterRatio)
     :ViewSFML(flowPhys, pixelsToMeterRatio), flowPhys(flowPhys)
+//    ,t1(clock::now())
 {
 #ifdef DEBUG
     std::cout  << "FlowIntoView constr" << std::endl;

@@ -20,6 +20,13 @@ private:
     // steps the physics engine if enough time has passed
     // returns true if physics has been stepped, false otherwise
     bool step();
+
+
+//    int32 microTimeStep;
+//
+//    clock::time_point t1;
+//    microseconds acc;
+
 };
 
 #endif // FLOWINTOVIEW_HPP

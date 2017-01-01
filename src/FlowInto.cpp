@@ -9,8 +9,10 @@ FlowInto::FlowInto()
     partSysDef.radius = 0.35f;
 
     particleSystem = world.CreateParticleSystem(&partSysDef);
+//    particleSystem->SetMaxParticleCount(300);
 
     partDef.position.Set(0, 0);
+    partDef.velocity.Set(10, 0);
 
     b2BodyDef bowlDef;
     bowlDef.position.Set(0, 0);
