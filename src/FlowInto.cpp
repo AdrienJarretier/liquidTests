@@ -1,6 +1,7 @@
 #include "FlowInto.hpp"
 
 FlowInto::FlowInto()
+    :distribution(-2,2)
 {
 #ifdef DEBUG
     std::cout  << "FlowInto constr" << std::endl;
@@ -11,8 +12,8 @@ FlowInto::FlowInto()
     particleSystem = world.CreateParticleSystem(&partSysDef);
 //    particleSystem->SetMaxParticleCount(300);
 
-    partDef.position.Set(0, 0);
-    partDef.velocity.Set(10, 0);
+    partDef.position.y = 20;
+    partDef.velocity.Set(0, -30);
 
     b2BodyDef bowlDef;
     bowlDef.position.Set(0, 0);
@@ -36,6 +37,13 @@ FlowInto::FlowInto()
 
 int32 FlowInto::newParticle()
 {
+
+    float32 x = distribution(generator);
+
+#ifdef DEBUG
+    std::cout << "x : " << x << std::endl;
+#endif // DEBUG
+    partDef.position.x = x;
     return particleSystem->CreateParticle(partDef);
 #ifdef DEBUG
     std::cout << "particles count : "  << particleSystem->GetParticleCount() << std::endl;

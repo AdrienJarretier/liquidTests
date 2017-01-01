@@ -3,6 +3,7 @@
 
 #include "Physics.hpp"
 
+#include <random>
 #include <vector>
 
 class FlowInto : public Physics
@@ -21,6 +22,9 @@ protected:
 private:
     b2ParticleDef partDef;
     b2ParticleSystem* particleSystem;
+
+    std::default_random_engine generator;
+    std::uniform_real_distribution<float32> distribution;
 };
 
 #endif // FLOWINTO_HPP
