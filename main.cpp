@@ -13,7 +13,7 @@ int main()
 
 //    cout << "part iterations : " << phys.getWorld().CalculateReasonableParticleIterations(Physics::TIME_STEP) << endl;
 //
-    FlowIntoView view(10);
+    FlowIntoView view(phys, 10);
 
     view.setSpeedFactor(1);
 
