@@ -46,3 +46,7 @@ void FlowInto::step()
     world.Step(TIME_STEP, VELOCITY_ITERATIONS, POSITION_ITERATIONS, PARTICLES_ITERATIONS);
 }
 
+const b2ParticleSystem* FlowInto::getParticleSystem()
+{
+    return particleSystem;
+}

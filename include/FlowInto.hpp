@@ -16,6 +16,7 @@ public:
     **/
     int32 newParticle();
     void step();
+    const b2ParticleSystem* getParticleSystem();
 protected:
 private:
     b2ParticleDef partDef;

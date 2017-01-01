@@ -35,23 +35,26 @@ public:
     **/
     void setSpeedFactor(float fact);
 
+private:
+
+    Physics& phys;
+
 protected:
 
     // steps the physics engine if enough time has passed
     // returns true if physics has been stepped, false otherwise
     virtual bool step();
-private:
-
-    Physics& phys;
-    std::list<Shape> shapes;
     std::list<ParticleShape> particles;
-
-    float aspectRatio;
-    unsigned int windowWidth, windowHeight;
 
     // how much pixels in this representation
     // represent 1 meter in the physical world
     unsigned int pixelsToMeterRatio;
+private:
+
+    std::list<Shape> shapes;
+
+    float aspectRatio;
+    unsigned int windowWidth, windowHeight;
 
     sf::Vector2f viewCenter;
     float viewHeight, viewWidth;
