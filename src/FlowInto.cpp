@@ -40,14 +40,12 @@ int32 FlowInto::newParticle()
 
     float32 x = distribution(generator);
 
-#ifdef DEBUG
-    std::cout << "x : " << x << std::endl;
-#endif // DEBUG
+//#ifdef DEBUG
+////    std::cout << "x : " << x << std::endl;
+//    std::cout << "particles count : "  << particleSystem->GetParticleCount() << std::endl;
+//#endif // DEBUG
     partDef.position.x = x;
     return particleSystem->CreateParticle(partDef);
-#ifdef DEBUG
-    std::cout << "particles count : "  << particleSystem->GetParticleCount() << std::endl;
-#endif // DEBUG
 }
 
 

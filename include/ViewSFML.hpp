@@ -20,7 +20,6 @@ using namespace std::chrono;
 
 class ViewSFML
 {
-    using clock = high_resolution_clock;
 
 public:
 
@@ -40,6 +39,7 @@ private:
     Physics& phys;
 
 protected:
+    using clock = high_resolution_clock;
 
     // steps the physics engine if enough time has passed
     // returns true if physics has been stepped, false otherwise
