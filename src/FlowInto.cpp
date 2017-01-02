@@ -1,7 +1,7 @@
 #include "FlowInto.hpp"
 
 FlowInto::FlowInto()
-    :distribution(-2,2)
+    :distribution(-3.,3.)
 {
 #ifdef DEBUG
     std::cout  << "FlowInto constr" << std::endl;
@@ -10,9 +10,9 @@ FlowInto::FlowInto()
     partSysDef.radius = 0.35f;
 
     particleSystem = world.CreateParticleSystem(&partSysDef);
-//    particleSystem->SetMaxParticleCount(300);
+//    particleSystem->SetMaxParticleCount(3000);
 
-    partDef.position.y = 20;
+    partDef.position.y = 30;
     partDef.velocity.Set(0, -30);
 
     b2BodyDef bowlDef;

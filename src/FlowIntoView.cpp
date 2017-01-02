@@ -24,7 +24,23 @@ bool FlowIntoView::step()
 //    std::cout  << "step" << std::endl;
 //#endif // DEBUG
 
-    particles.push_back(ParticleShape(flowPhys.getParticleSystem(), flowPhys.newParticle(), pixelsToMeterRatio));
+    clock::time_point t2(clock::now());
+
+    microseconds dt = duration_cast<microseconds>(t2 - t1);;
+
+    acc += dt;
+
+    t1 = t2;
+
+    while(flowAcc/(float32)acc.count() < FLOW_RATE)
+    {
+        flowAcc += particleArea;
+
+        int32 partId = flowPhys.newParticle();
+
+        if(flowPhys.getParticleSystem()->GetMaxParticleCount() <= 0 || (int32)particles.size() < flowPhys.getParticleSystem()->GetMaxParticleCount())
+            particles.push_back(ParticleShape(flowPhys.getParticleSystem(), partId, pixelsToMeterRatio));
+    }
 
     return ViewSFML::step();
 }

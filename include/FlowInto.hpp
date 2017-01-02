@@ -10,7 +10,7 @@ class FlowInto : public Physics
 {
 public:
     FlowInto();
-    static const int32 PARTICLES_ITERATIONS = 1;
+    static const int32 PARTICLES_ITERATIONS = 2;
 
     /**
     @return the index of the particle.
