@@ -9,14 +9,14 @@ using namespace std;
 int main()
 {
 
-    FlowInto phys;
+    HelloWorld phys;
 
 //    cout << "part iterations : " << phys.getWorld().CalculateReasonableParticleIterations(Physics::TIME_STEP) << endl;
 //
-    FlowIntoView view(phys, 10);
+    ViewSFML view(phys, 10);
 
     view.setSpeedFactor(1);
 
-    view.launch(720);
+    view.launch(450);
 
 }
