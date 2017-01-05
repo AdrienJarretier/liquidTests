@@ -9,7 +9,7 @@ The base class for all tests is the Physics class ([header](include/Physics.hpp)
 
 ### Build instructions
 
-I'll be talking about **linux** and **Windows** here
+I'll be talking about **linux**( Ubuntu 16 ) and **Windows**( 7 ) here
 
 #### SFML includes
 
