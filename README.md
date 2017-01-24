@@ -13,4 +13,7 @@ I'll be talking about **linux**( Ubuntu 16 ) and **Windows**( 7 ) here
 
 #### SFML includes
 
-On **linux** if you have installed the sfml library you shouldn't have anything to do, the compiler will find the include files on the system
+            |       |
+---         | ---
+**Linux**   | If you have installed the sfml library you shouldn't have anything to do, the compiler will find the include files on the system
+**Windows** | Once you have a working SFML lib you have to indicate to Code::Blocks where to find the SFML header directory, go into the **compiler settings**, and under **Search directorie** add your SFML include dir
