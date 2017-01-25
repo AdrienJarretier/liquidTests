@@ -17,7 +17,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="extlibs/libs/Linux/Box2D/Debug/libliquidfun.a" />
+					<Add library="extlibs/libs/Windows/Box2D/Debug/libliquidfun.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -31,7 +31,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="extlibs/libs/Linux/Box2D/Release/libliquidfun.a" />
+					<Add library="extlibs/libs/Windows/Box2D/Release/libliquidfun.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -43,6 +43,7 @@
 			<Add option="-lsfml-graphics" />
 			<Add option="-lsfml-window" />
 			<Add option="-lsfml-system" />
+			<Add directory="extlibs/libs/Windows/SFML" />
 		</Linker>
 		<Unit filename="include/FallingBubble.hpp" />
 		<Unit filename="include/FlowInto.hpp" />
