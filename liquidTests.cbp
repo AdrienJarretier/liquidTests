@@ -17,7 +17,7 @@
 					<Add directory="include" />
 				</Compiler>
 				<Linker>
-					<Add library="extlibs/libs/Box2D/Debug/libliquidfun.a" />
+					<Add library="extlibs/libs/Linux/Box2D/Debug/libliquidfun.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -31,7 +31,7 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
-					<Add library="extlibs/libs/Box2D/Release/libliquidfun.a" />
+					<Add library="extlibs/libs/Linux/Box2D/Release/libliquidfun.a" />
 				</Linker>
 			</Target>
 		</Build>
